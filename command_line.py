@@ -1,17 +1,23 @@
 import sys
-from typing import List
-from convert import str_to_float
+import convert
 
-def sum_command_line_args(args: List[str]) -> float:
-    total = 0.0
-    for arg in args:
-        number = str_to_float(arg)
-        if number is not None:
-            total += number
-    return total
+
+#Main takes in inputs from the command_line parameters and creates a sum of all numbers input.
+#Main takes in any value and returns a float
+#def main():
+#print(numbers)
+#if script parameters = (hello 1 2 3 done)
+# 6.0
+def main():
+    numbers = 0.0
+    for arg in sys.argv[1:]:
+        if arg == 'done':
+            break
+        if convert.string_to_float(arg) is not None:
+            numbers += convert.string_to_float(arg)
+    print(numbers)
+
+
 
 if __name__ == '__main__':
-    # sys.argv[1:] skips the first element (the script name)
-    result = sum_command_line_args(sys.argv[1:])
-    print("Sum of command-line arguments:", result)
-
+    main()
